@@ -74,6 +74,33 @@
     html_logo_url = "https://raw.githubusercontent.com/ghostty-org/ghostty/2d0fb81751def478e2f8a5f7e2ee91fa9cbf9bff/images/icons/icon_128@2x.png"
 )]
 #![warn(clippy::pedantic)]
+// Zoid: allow the style/pedantic findings upstream accepts, so the
+// workspace `-D warnings` gate does not churn this vendored diff on every
+// toolchain bump. Verified against rust 1.95 clippy; extend if new lints fire.
+// Zoid consumes this crate vendored; see its VENDORED.md.
+#![allow(
+    clippy::borrow_as_ptr,
+    clippy::cast_possible_truncation,
+    clippy::cast_sign_loss,
+    clippy::doc_markdown,
+    clippy::elidable_lifetime_names,
+    clippy::ignored_unit_patterns,
+    clippy::inline_always,
+    clippy::map_unwrap_or,
+    clippy::must_use_candidate,
+    clippy::needless_borrow,
+    clippy::needless_continue,
+    clippy::needless_pass_by_value,
+    clippy::new_without_default,
+    clippy::ptr_as_ptr,
+    clippy::redundant_closure_for_method_calls,
+    clippy::return_self_not_must_use,
+    clippy::semicolon_if_nothing_returned,
+    clippy::should_implement_trait,
+    clippy::used_underscore_items,
+    clippy::wildcard_in_or_patterns,
+    reason = "vendored upstream lint posture; workspace gate is `-D warnings`"
+)]
 #![warn(missing_docs)]
 #![warn(missing_debug_implementations)]
 #![warn(missing_copy_implementations)]
